@@ -1,22 +1,91 @@
+function renderTitleSection(title) {
+    console.log("Rendering Title.....");
+    if (title !== "") {
+        return `# ${title}`;
+    } else {
+        return "# Title";
+    }
+
+}
+
+function renderDescriptionSection(desc) {
+    console.log("Rendering Description.....");
+    return `## Description
+${desc}`;
+}
+
+function renderTableSection() {
+    console.log("Rendering Table of Contents.....");
+    return `## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+- [How to Contribute](#how-to-contribute)
+- [Tests](#tests)`;
+}
+
+function renderInstallationSection(install) {
+    console.log("Rendering Installation Instructions.....");
+    return `## Instructions
+${install}`;
+}
+
+function renderUsageSection(usage) {
+    console.log("Rendering Usage Instructions.....");
+    return `## Usage
+${usage}`;
+}
+
+function renderGitHub(profile) {
+    console.log("Rendering GitHub Section.....");
+    if (profile !== "") {
+        return `### Github
+[${profile}](https://github.com/${profile})`;
+    } else {
+        return "";
+    }
+}
+
+function renderEmail(email) {
+    console.log("Rendering Email.....");
+    if (email !== "") {
+        return `### Email
+[${email}](${email})`;
+    } else {
+        return "";
+    }
+}
+
+function renderCreditsSection(profile, email) {
+    let userProfile = renderGitHub(profile);
+    let userEmail =  renderEmail(email);
+
+    return `## Credits
+${userProfile}
+${userEmail}`
+}
+
 function renderLicenseBadge(license) {
-    let link = renderLicenseLink(license)
+    console.log("Rendering License Badge.....");
+    let link = renderLicenseLink(license);
     switch(license) {
         case "MIT":
             return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](${link})`;
             break;
         case "Apache":
-            return `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](${link})`
+            return `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](${link})`;
             break;
         case "GPL":
-            return `[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](${link})`
+            return `[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](${link})`;
             break;
         default:
             return "";
     }
 }
 
-// If there is no license, return an empty string
 function renderLicenseLink(license) {
+    console.log("Rendering License Link.....");
     switch(license) {
         case "MIT":
             return "https://opensource.org/licenses/MIT";
@@ -33,67 +102,45 @@ function renderLicenseLink(license) {
 }
 
 function renderLicenseSection(license) {
-    console.log("renderlicensesec:"+license)
+    console.log("Rendering License Section.....");
     let badge = renderLicenseBadge(license);
-    console.log("renderbadge: " +badge)
-    let link = renderLicenseLink(license);
-    console.log("renderlinke: " +link)
     return `## License
 ${badge}`
 }
 
-function renderGitHub(profile) {
-    if (profile !== "") {
-        return `### Github
-[${profile}](https://github.com/${profile})`;
-    } else {
-        return "";
-    }
+function renderContributeSection(contribute) {
+    console.log("Rendering Contribution Instructions.....");
+    return `## How to Contribute
+${contribute}`;
 }
 
-function renderEmail(email) {
-    if (email !== "") {
-        return `### Email
-[${email}](${email})`;
-    } else {
-        return "";
-    }
+function renderTestsSection(tests) {
+    console.log("Rendering Test Instructions.....");
+    return `## Tests
+${tests}`;
 }
 
 function generateMarkdown(data) {
+  console.log("Generating Markdown.....");
+  let titleSection = renderTitleSection(data.title);
+  let descSection = renderDescriptionSection(data.desc);
+  let tableSection = renderTableSection();
+  let installSection = renderInstallationSection(data.install);
+  let usageSection = renderUsageSection(data.usage);
   let licenseSection = renderLicenseSection(data.license);
-  let userProfile = renderGitHub(data.username);
-  let userEmail =  renderEmail(data.email);
+  let creditsSection = renderCreditsSection(data.username, data.email);
+  let contributeSection = renderContributeSection(data.contribute);
+  let testsSection = renderTestsSection(data.tests);
 
-  return `# ${data.title}
-## Description
-${data.desc}
-
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
-- [How to Contribute](#how-to-contribute)
-- [Tests](#tests)
-
-## Installation
-${data.install}
-
-## Usage
-${data.usage}
-
-## Credits
-${userProfile}
-${userEmail}
-
+  return `${titleSection}
+${descSection}
+${tableSection}
+${installSection}
+${usageSection}
+${creditsSection}
 ${licenseSection}
-
-## How to Contribute
-${data.contribute}
-
-## Tests
-${data.tests}
+${contributeSection}
+${testsSection}
   `;
 }
 

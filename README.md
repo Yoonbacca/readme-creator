@@ -1,6 +1,8 @@
 # Readme Creator
 ## Description
-This is a Readme Creator designed by Yoon-Jae Kim. The purpose of this program is to generate a professional README using the CLI. After running 'node index.js', the user will be put through a series of prompts using the inquirer module. After answering each question, a new README file will be created in the project directory.
+![Readme Creator](./assets/images/screenshot.png)
+
+This is a Readme Creator designed by Yoon-Jae Kim. The purpose of this program is to generate a professional README using the CLI. After running 'node index.js', the user will be put through a series of prompts using the inquirer module. After answering each question, a new README file will be created in the project directory. Methods used here were learned from NW Coding Bootcamp.
 
 ## Table of Contents
 - [Installation](#installation)
@@ -23,7 +25,7 @@ This project can be used by anyone looking to streamline their README creation p
 [yoonjaekim3@gmail.com](yoonjaekim3@gmail.com)
 
 ## License
-
+None
 
 ## How to Contribute
 This is a solo project and does not require contributions at this time.
