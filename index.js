@@ -54,8 +54,8 @@ const questions = [
 
 
 function writeToFile(data) { 
-    fs.writeFile('README.MD', data, (err) =>
-    err ? console.error(err) : console.log('Success!')
+    fs.writeFile('./readme-folder/README.md', data, (err) =>
+    err ? console.error(err) : console.log('Success! Check the README folder for your new file!')
     );
 }
 
