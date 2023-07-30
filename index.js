@@ -54,14 +54,14 @@ const questions = [
 
 
 function writeToFile(data) { 
-    fs.writeFile('./readme-folder/README.md', data, (err) =>
-    err ? console.error(err) : console.log('Success! Check the README folder for your new file!')
+
+    fs.writeFile('./assets/README.md', data, (err) =>
+    err ? console.error(err) : console.log('Success! Check the assets folder for your new file!')
     );
 }
 
 function init() {
-    console.log('Welcome to README Creator! Please follow the prompts below')
-
+    console.log('Welcome to README Creator! Please follow the prompts below');
     inquirer.prompt(questions).then((answers) => {
         console.log("Thank you!");
         let content = markdown.generateMarkdown(answers);
