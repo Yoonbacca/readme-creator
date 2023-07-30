@@ -58,6 +58,7 @@ function renderEmail(email) {
 }
 
 function renderCreditsSection(profile, email) {
+    console.log("Rendering Credits.....");
     let userProfile = renderGitHub(profile);
     let userEmail =  renderEmail(email);
 
